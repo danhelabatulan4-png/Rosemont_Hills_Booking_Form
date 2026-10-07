@@ -1,10 +1,7 @@
 const form = document.getElementById("bookingForm");
-
 const checkIn = document.getElementById("checkIn");
 const checkOut = document.getElementById("checkOut");
-
 const message = document.getElementById("message");
-
 
 // Prevent selecting past dates
 const today = new Date().toISOString().split("T")[0];
@@ -12,54 +9,54 @@ const today = new Date().toISOString().split("T")[0];
 checkIn.min = today;
 checkOut.min = today;
 
-
-// Make sure check-out is after check-in
+// Make check-out date follow the check-in date
 checkIn.addEventListener("change", function () {
-
-  if (checkIn.value) {
-
     checkOut.min = checkIn.value;
 
-    if (checkOut.value <= checkIn.value) {
-      checkOut.value = "";
+    if (checkOut.value && checkOut.value <= checkIn.value) {
+        checkOut.value = "";
     }
-
-  }
-
 });
 
+// Form validation
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-// Form submission
-form.addEventListener("submit", function(event) {
+    const requiredFields = form.querySelectorAll("[required]");
+    let valid = true;
 
-  event.preventDefault();
+    requiredFields.forEach(function (field) {
+        field.classList.remove("error-input");
 
-  if (!form.checkValidity()) {
+        if (!field.value.trim()) {
+            field.classList.add("error-input");
+            valid = false;
+        }
+    });
+
+    // Check-out must be after check-in
+    if (
+        checkIn.value &&
+        checkOut.value &&
+        checkOut.value <= checkIn.value
+    ) {
+        checkOut.classList.add("error-input");
+        valid = false;
+    }
+
+    if (!valid) {
+        message.textContent =
+            "Please complete all required fields and check your dates.";
+        message.className = "error";
+        return;
+    }
 
     message.textContent =
-      "Please complete all required fields.";
+        "Booking details submitted successfully! We will check availability.";
+    message.className = "success";
 
-    message.className = "error";
+    form.reset();
 
-    return;
-  }
-
-
-  if (checkOut.value <= checkIn.value) {
-
-    message.textContent =
-      "Check-out date must be after the check-in date.";
-
-    message.className = "error";
-
-    return;
-  }
-
-
-  message.textContent =
-  "Booking submitted successfully! Your reservation details have been received.";
-
-message.className = "success";
-
-form.reset();
+    checkIn.min = today;
+    checkOut.min = today;
 });
