@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #263238;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+.site-header {
+  text-align: center;
+  background: white;
+  padding: 25px;
+  border-radius: 14px 14px 0 0;
+  border-bottom: 4px solid #5b7db1;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.site-header p {
+  color: #64748b;
+}
+
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 0 0 14px 14px;
+}
+
+.card {
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b8c2cc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #5b7db1;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #496b9d;
+}
+
+#message {
+  display: none;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.success {
+  display: block !important;
+  background: #eaf7ed;
+  color: #176b2c;
+}
+
+.error {
+  display: block !important;
+  background: #fff0f0;
+  color: #9b1c1c;
+}
+
+@media (max-width: 600px) {
+
+  .container {
+    width: 95%;
+    margin: 15px auto;
+  }
+
+  .site-header h1 {
+    font-size: 24px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+}
+.book-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 20px;
+  background: #5b7db1;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.book-btn:hover {
+  background: #496b9d;
+}
